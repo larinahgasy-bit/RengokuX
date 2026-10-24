@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RengokuX Sensi</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 18px 12px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background:
+        radial-gradient(ellipse at top, #58121c 0%, transparent 50%),
+        linear-gradient(150deg, #080808, #18080d, #050505);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 480px;
+    margin: auto;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 28px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #69232e;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #2a0a10, #100b11, #28090d);
+    box-shadow: 0 0 25px #ff202033;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ff444415, transparent);
+    animation: shine 5s infinite;
+    pointer-events: none;
+}
+
+.fire {
+    font-size: 48px;
+    animation: flame 1.5s infinite alternate;
+}
+
+.tag {
+    color: #ff8888;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.logo {
+    font-size: clamp(30px, 9vw, 43px);
+    font-weight: 900;
+    font-style: italic;
+    margin: 12px 0;
+    text-shadow: 0 0 10px red, 0 0 25px #ff2020;
+}
+
+.logo span {
+    color: #ff3030;
+    font-size: 1.25em;
+}
+
+.line {
+    width: 100px;
+    height: 3px;
+    background: #ff3030;
+    margin: 15px auto;
+    box-shadow: 0 0 12px red;
+}
+
+.subtitle {
+    color: #ff4444;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.description {
+    color: #aaaab9;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.status {
+    display: inline-block;
+    padding: 9px 12px;
+    border: 1px solid #663039;
+    border-radius: 20px;
+    color: #ffaaaa;
+    background: #200b10;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.card {
+    padding: 19px;
+    margin-bottom: 16px;
+    border: 1px solid #49232b;
+    border-radius: 16px;
+    background: #11141e;
+    box-shadow: 0 5px 20px #00000050;
+}
+
+h2 {
+    color: #ff7777;
+    font-size: 17px;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #c5cbd8;
+    font-size: 13px;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    color: white;
+    background: #090e17;
+    border: 1px solid #303c50;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    color: white;
+    background: linear-gradient(90deg, #a90e20, #ff3030);
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 15px #ff303022;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.secondary {
+    background: #202b3c;
+    border: 1px solid #344157;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px;
+    margin: 9px 0;
+    background: #090e17;
+    border: 1px solid #273346;
+    border-radius: 9px;
+}
+
+.result span {
+    color: #b9c4d5;
+    font-size: 13px;
+}
+
+.result strong {
+    color: #ff4848;
+    font-size: 21px;
+}
+
+.note {
+    color: #9da8bb;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #78859a;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+@keyframes flame {
+    from {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 5px red);
+    }
+    to {
+        transform: translateY(-5px) scale(1.08);
+        filter: drop-shadow(0 0 18px #ff3030);
+    }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50%, 100% { left: 150%; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header class="hero">
+    <div class="fire">🔥</div>
+    <div class="tag">⚔ FREE FIRE • ANIME STYLE ⚔</div>
+    <h1 class="logo">RENGOKU<span>X</span></h1>
+    <div class="line"></div>
+    <div class="subtitle">SENSI GENERATOR</div>
+    <p class="description">FIND YOUR SENSI. MASTER YOUR AIM.</p>
+    <div class="status">● HEADSHOT MODE ACTIVATED</div>
+</header>
+
+<div class="card">
+    <h2>📱 Configuration du téléphone</h2>
+
+    <label for="brand">Marque</label>
+    <select id="brand">
+        <option>Xiaomi</option>
+        <option>Samsung</option>
+        <option>iPhone</option>
+        <option>Google Pixel</option>
+        <option>Realme</option>
+        <option>Tecno</option>
+        <option>Infinix</option>
+        <option>Autre</option>
+    </select>
+
+    <label for="phone">Modèle exact</label>
+    <input id="phone" value="Xiaomi Mi 10 Pro"
+           placeholder="Ex : Xiaomi Mi 10 Pro">
+
+    <label for="ram">RAM</label>
+    <select id="ram">
+        <option value="2">2 Go</option>
+        <option value="3">3 Go</option>
+        <option value="4">4 Go</option>
+        <option value="6">6 Go</option>
+        <option value="8" selected>8 Go</option>
+        <option value="12">12 Go</option>
+        <option value="16">16 Go ou plus</option>
+    </select>
+
+    <label for="dpi">DPI actuel</label>
+    <input id="dpi" type="number" min="200" max="1000"
+           value="440" placeholder="Ex : 440">
+
+    <label for="style">Style de jeu</label>
+    <select id="style">
+        <option value="balanced">Équilibré</option>
+        <option value="rush">Freestyle / Rush</option>
+        <option value="onetap">One Tap / Drag</option>
+        <option value="control">Contrôle précis</option>
+    </select>
+
+    <label for="scale">Sensibilité maximale du jeu</label>
+    <select id="scale">
+        <option value="200">0 à 200</option>
+        <option value="100">0 à 100</option>
+    </select>
+
+    <button onclick="generate()">🔥 GÉNÉRER MA SENSI</button>
+</div>
+
+<div id="output" class="card hidden">
+    <h2>🎯 Ta sensibilité personnalisée</h2>
+    <p id="profile" class="note"></p>
+    <div id="values"></div>
+
+    <div class="result">
+        <span>Bouton de tir</span>
+        <strong id="fire"></strong>
+    </div>
+
+    <div class="result">
+        <span>DPI choisi</span>
+        <strong id="dpiResult"></strong>
+    </div>
+
+    <button onclick="copySettings()">📋 COPIER MA SENSI</button>
+    <button class="secondary" onclick="generate()">↻ REGENERER</button>
+
+    <p class="note">
+        Réglages estimés : teste-les en entraînement et ajuste-les
+        selon ton téléphone et tes sensations.
+    </p>
+</div>
+
+<footer>
+    🔥 RENGOKUX SENSI © 2026<br>
+    AIM • PRECISION • HEADSHOT<br>
+    Fan project indépendant, non affilié à Garena.
+</footer>
+
+</div>
+
+<script>
+function generate() {
+    const phone = document.getElementById("phone").value.trim();
+    const brand = document.getElementById("brand").value;
+    const ram = Number(document.getElementById("ram").value);
+    const dpi = Number(document.getElementById("dpi").value);
+    const style = document.getElementById("style").value;
+    const scale = Number(document.getElementById("scale").value);
+
+    if (!phone) {
+        alert("Entre le modèle de ton téléphone !");
+        return;
+    }
+
+    if (!Number.isFinite(dpi) || dpi < 200 || dpi > 1000) {
+        alert("Entre un DPI entre 200 et 1000.");
+        return;
+    }
+
+    let general = 160;
+    let redDot = 155;
+    let x2 = 145;
+    let x4 = 130;
+    let sniper = 100;
+    let freeLook = 145;
+
+    let ramAdjust = ram <= 3 ? 5 : ram <= 4 ? 3 :
+                    ram >= 12 ? -2 : 0;
+
+    let dpiAdjust = Math.max(-8, Math.min(8,
+        Math.round((dpi - 440) / 40)));
+
+    let hash = 0;
+    for (let i = 0; i < (brand + phone).length; i++) {
+        hash = (hash * 31 + (brand + phone).charCodeAt(i)) | 0;
+    }
+
+    let modelAdjust = Math.abs(hash % 7) - 3;
+
+    general += ramAdjust + modelAdjust - dpiAdjust;
+    redDot += ramAdjust + modelAdjust - dpiAdjust;
+    x2 += ramAdjust + modelAdjust - Math.round(dpiAdjust / 2);
+    x4 += modelAdjust - Math.round(dpiAdjust / 2);
+    sniper += modelAdjust;
+    freeLook += ramAdjust + modelAdjust;
+
+    if (style === "rush") {
+        general += 10;
+        redDot += 8;
+        x2 += 5;
+        freeLook += 8;
+    } else if (style === "onetap") {
+        general += 12;
+        redDot += 10;
+        x2 += 4;
+    } else if (style === "control") {
+        general -= 12;
+        redDot -= 10;
+        x2 -= 8;
+        x4 -= 5;
+        sniper -= 5;
+    }
+
+    const settings = [
+        ["Général", general],
+        ["Point rouge", redDot],
+        ["Lunette ×2", x2],
+        ["Lunette ×4", x4],
+        ["Sniper", sniper],
+        ["Vue libre", freeLook]
+    ];
+
+    settings.forEach(item => {
+        item[1] = Math.max(0, Math.min(scale,
+            Math.round(item[1] * scale / 200)));
+    });
+
+    const fire = style === "rush" ? 52 :
+                 style === "onetap" ? 48 :
+                 style === "control" ? 42 : 46;
+
+    document.getElementById("profile").textContent =
+        phone + " • " + ram + " Go RAM • " + dpi + " DPI";
+
+    document.getElementById("values").innerHTML = "";
+
+    settings.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "result";
+
+        const label = document.createElement("span");
+        label.textContent = item[0];
+
+        const value = document.createElement("strong");
+        value.textContent = item[1];
+
+        row.append(label, value);
+        document.getElementById("values").appendChild(row);
+    });
+
+    document.getElementById("fire").textContent = fire + "%";
+    document.getElementById("dpiResult").textContent = dpi;
+    document.getElementById("output").classList.remove("hidden");
+
+    window.currentSettings = settings;
+    window.currentFire = fire;
+    window.currentDpi = dpi;
+
+    document.getElementById("output").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function copySettings() {
+    if (!window.currentSettings) return;
+
+    const text = "RENGOKUX SENSI\n" +
+        window.currentSettings.map(item =>
+            item[0] + " : " + item[1]
+        ).join("\n") +
+        "\nBouton de tir : " + window.currentFire + "%" +
+        "\nDPI : " + window.currentDpi;
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+            .then(() => alert("Sensi copiée !"))
+            .catch(() => fallbackCopy(text));
+    } else {
+        fallbackCopy(text);
+    }
+}
+
+function fallbackCopy(text) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+
+    try {
+        document.execCommand("copy");
+        alert("Sensi copiée !");
+    } catch (e) {
+        alert(text);
+    }
+
+    area.remove();
+}
+</script>
+</body>
+</html>
